@@ -1,0 +1,39 @@
+name: ci-wf
+on:
+  pull_request:
+    branches:
+      - develop
+  puhs:
+    branches:
+      - develop
+jobs:
+  lint-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Weclome Step
+        run: starting the linting job on the runner
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Install HTMLHint and Stylelint
+        run: |
+          npm install htmlhint --save-dev
+          npm install stylelint --save-dev
+      - name: Lint HTML
+        run: |
+          npx htmlhint "**/*.html"
+          npx stylelint "**/*.css"
+  build-job:
+    needs: lint-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Weclome Message In Build-Job
+        run: echo "Allah Always Help Me"
+      - name: Install Parcel
+        run: npm install parcel --save-dev
+      - name: Build Website With Parcel
+        run: npx parcel ./src/index.html --dist-dir staging
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with: 
+          name: build-artifact-ia
+          path: ./staging
