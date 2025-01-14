@@ -3,7 +3,7 @@ on:
   pull_request:
     branches:
       - develop
-  puhs:
+  push:
     branches:
       - develop
 jobs:
