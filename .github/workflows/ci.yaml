@@ -29,7 +29,7 @@ jobs:
       - name: Weclome Message In Build-Job
         run: echo "Allah Always Help Me"
       - name: Checkout Repository
-        run: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: Install Parcel
         run: npm install parcel --save-dev
       - name: Build Website With Parcel
