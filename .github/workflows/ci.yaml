@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Weclome Step
-        run: starting the linting job on the runner
+        run: echo "starting the linting job on the runner"
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Install HTMLHint and Stylelint
@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Weclome Message In Build-Job
         run: echo "Allah Always Help Me"
+      - name: Checkout Repository
+        run: actions/checkout@v4
       - name: Install Parcel
         run: npm install parcel --save-dev
       - name: Build Website With Parcel
